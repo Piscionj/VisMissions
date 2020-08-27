@@ -1,0 +1,10 @@
+main: VMMain.VisMissions
+name: VisMissions
+api-version: 1.15
+version: 1.0
+author: Viscar
+softdepend:
+  - CoreProtect
+  - Vault
+commands:
+  vm:

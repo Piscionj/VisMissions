@@ -1,0 +1,47 @@
+##################
+#   VisMissions  #
+##################
+#
+# Permissions:
+# vismissions.admin - access to reload and give commands
+#
+# Monetary reward for each mission difficulty
+easyReward: 5.0
+mediumReward: 10.0
+hardReward: 20.0
+#
+# NOTE: For creating/editing any missions, do not put spaces before or after the commas
+# All entity/item/block names are what is seen in game
+#
+# All catch missions (DIFFICULTY,Amount to Catch Range,Entity Name)
+catchMissions:
+  - EASY,1-3,Raw Salmon
+#
+# All kill missions (DIFFICULTY,Amount to Slay Range,Entity Name)
+killMissions:
+  - EASY,1-3,Zombie
+#
+# All craft missions (DIFFICULTY,Amount to Craft Range,Item Name)
+craftMissions:
+  - EASY,6-8,Oak Planks
+#
+# All mining missions (DIFFICULTY,Amount to Mine Range,Block Material Name)
+# Example blocks: Stone, Diamond Ore, etc.
+mineMissions:
+  - EASY,4-6,Stone
+#
+# All smelting missions (DIFFICULTY,Amount to Smelt Range,Item Name (Result of smelting))
+# Example items: Iron Ingot, Gold Ingot, etc.
+smeltMissions:
+  - EASY,6-8,Iron Ingot
+#
+# All taming missions (DIFFICULTY,Amount to Smelt Range,Entity Name)
+# Example Entities: Wolf, Horse
+tameMissions:
+  - EASY,2-5,Wolf
+#
+# All plant missions (DIFFICULTY,Amount to Plant Range,Item Name)
+# Example plants: Carrots, Melon Stem, Wheat, Potatoes, Pumpkin Stem, Sweet Berry Bush, etc.
+# For more see: https://minecraft.gamepedia.com/Crops
+plantMissions:
+  - EASY,2-5,Carrots
