@@ -1,6 +1,6 @@
-main: VMMain.VisMissions
+main: me.Viscar.VisMissions
 name: VisMissions
-api-version: 1.15
+api-version: 1.17
 version: 1.0
 author: Viscar
 softdepend:

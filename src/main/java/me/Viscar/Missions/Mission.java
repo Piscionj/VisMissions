@@ -1,4 +1,4 @@
-package VMMissions;
+package me.Viscar.Missions;
 
 import org.bukkit.ChatColor;
 

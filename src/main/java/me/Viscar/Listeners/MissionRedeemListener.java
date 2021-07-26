@@ -1,7 +1,7 @@
-package VMListeners;
+package me.Viscar.Listeners;
 
-import VMMissions.MissionUpdater;
-import VMMissions.Mission;
+import me.Viscar.Missions.MissionUpdater;
+import me.Viscar.Missions.Mission;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

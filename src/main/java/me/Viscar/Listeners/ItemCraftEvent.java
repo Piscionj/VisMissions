@@ -1,6 +1,6 @@
-package VMListeners;
+package me.Viscar.Listeners;
 
-import VMMissions.MissionUpdater;
+import me.Viscar.Missions.MissionUpdater;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

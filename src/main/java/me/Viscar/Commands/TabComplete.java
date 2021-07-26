@@ -1,4 +1,4 @@
-package VMCommands;
+package me.Viscar.Commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

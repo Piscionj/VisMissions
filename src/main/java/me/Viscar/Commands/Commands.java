@@ -1,6 +1,6 @@
-package VMCommands;
+package me.Viscar.Commands;
 
-import VMMissions.MissionGiver;
+import me.Viscar.Missions.MissionGiver;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

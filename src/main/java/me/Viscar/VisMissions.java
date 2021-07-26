@@ -1,8 +1,8 @@
-package VMMain;
+package me.Viscar;
 
-import VMCommands.Commands;
-import VMCommands.TabComplete;
-import VMListeners.*;
+import me.Viscar.Commands.Commands;
+import me.Viscar.Commands.TabComplete;
+import me.Viscar.Listeners.*;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.TabCompleter;
