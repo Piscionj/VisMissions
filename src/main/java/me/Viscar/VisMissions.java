@@ -22,12 +22,13 @@ public class VisMissions extends JavaPlugin {
         log.info("[VisMissions] Booting up ... ");
         saveDefaultConfig();
         if (!setupEconomy())
-            log.severe(String.format("[%s] - Disabled mission redeeming to no Vault dependency found!", getDescription().getName()));
+            log.severe(String.format("[%s] - Disabled mission redeeming due to no Vault dependency found!", getDescription().getName()));
 
         registerListeners();
 
         this.getCommand("vm").setExecutor((CommandExecutor) new Commands());
         this.getCommand("vm").setTabCompleter((TabCompleter) new TabComplete());
+        log.info("[VisMissions] Finished loading!");
     }
 
     public void onDisable() {

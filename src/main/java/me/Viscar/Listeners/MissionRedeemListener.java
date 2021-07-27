@@ -1,7 +1,7 @@
 package me.Viscar.Listeners;
 
+import me.Viscar.Missions.MissionDifficulty;
 import me.Viscar.Missions.MissionUpdater;
-import me.Viscar.Missions.Mission;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -46,7 +46,7 @@ public class MissionRedeemListener implements Listener {
         if(!dataContainer.has(MissionUpdater.getCompleteNameSpaceKey(), PersistentDataType.INTEGER)
                 || dataContainer.get(MissionUpdater.getCompleteNameSpaceKey(), PersistentDataType.INTEGER) != 1)
             return;
-        Mission.Difficulty difficulty = Mission.Difficulty.valueOf(im.getLore().get(2).substring(16));
+        MissionDifficulty difficulty = MissionDifficulty.valueOf(im.getLore().get(2).substring(16));
         double amountToGive = 0;
         switch(difficulty) {
             case EASY:

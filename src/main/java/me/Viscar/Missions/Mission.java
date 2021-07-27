@@ -4,21 +4,13 @@ import org.bukkit.ChatColor;
 
 public class Mission {
 
-    public enum Difficulty {
-        EASY, MEDIUM, HARD
-    }
-
-    public enum MissionType {
-        CATCH, KILL, CRAFT, MINE, SMELT, TAME, PLANT
-    }
-
-    private Difficulty difficulty;
+    private MissionDifficulty difficulty;
     private int amountRequiredMin;
     private int amountRequiredMax;
     private MissionType missionType;
     private String missionObjective; // Used different depending on the mission type
 
-    public Mission(MissionType missionType, Difficulty difficulty, int amountRequiredMin, int amountRequiredMax, String missionObjective) {
+    public Mission(MissionType missionType, MissionDifficulty difficulty, int amountRequiredMin, int amountRequiredMax, String missionObjective) {
         this.missionType = missionType;
         this.difficulty = difficulty;
         this.amountRequiredMin = amountRequiredMin;

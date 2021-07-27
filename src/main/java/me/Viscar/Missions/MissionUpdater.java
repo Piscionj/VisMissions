@@ -92,7 +92,7 @@ public class MissionUpdater {
         // Get line containing the progress of the mission
         String numClearedLine = loreList.get(1);
         // Parse line
-        int colonIndex = numClearedLine.indexOf(":") + 2;
+        int colonIndex = numClearedLine.indexOf(":") + 4;
         String[] numbers = numClearedLine.substring(colonIndex).split("/");
         int numDone = Integer.valueOf(numbers[0]);
         int numRequired = Integer.valueOf(numbers[1]);

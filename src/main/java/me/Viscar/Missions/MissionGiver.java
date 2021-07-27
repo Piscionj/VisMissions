@@ -18,6 +18,9 @@ import java.util.List;
 public class MissionGiver {
 
     private static ArrayList<Mission> missionsList = getMissionsFromConfig();
+    private static ChatColor nameColor = ChatColor.AQUA;
+    private static ChatColor loreColor = ChatColor.DARK_PURPLE;
+    private static ChatColor countColor = ChatColor.AQUA;
     private static Plugin plugin = Bukkit.getPluginManager().getPlugin("VisMissions");
     // Added so missions aren't stackable
     private static final NamespacedKey randomMissionKey = new NamespacedKey(plugin, "random");
@@ -28,11 +31,7 @@ public class MissionGiver {
     }
 
     public static void giveNumberedMission(Player player, int index) {
-        if(index >= missionsList.size())
-            giveRandomMission(player);
-        else
-            // If it'll throw an index out of bounds exception, just give a random mission
-            giveMission(player, missionsList.get(index));
+        giveMission(player, missionsList.get(index % missionsList.size()));
     }
 
     private static void giveMission(Player player, Mission missionObj) {
@@ -46,17 +45,17 @@ public class MissionGiver {
         dataContainer.set(MissionUpdater.getTypeNameSpaceKey(), PersistentDataType.STRING, missionObj.getMissionType().name());
         dataContainer.set(randomMissionKey, PersistentDataType.DOUBLE, Math.random());
 
-        im.setDisplayName(ChatColor.AQUA + "" + ChatColor.ITALIC + "Mission");
+        im.setDisplayName(nameColor + "" + ChatColor.ITALIC + "Mission");
         List<String> loreList = new ArrayList<String>();
         // Informational first line
-        loreList.add(ChatColor.DARK_PURPLE + "Hold in your offhand and perform the task to collect your reward!");
+        loreList.add(loreColor + "Hold in your offhand and perform the task to collect your reward!");
         // Mission type line
         String missionType = missionObj.getMissionType().name();
         // Format mission type and add
         missionType = missionType.substring(0,1) + missionType.substring(1).toLowerCase();
-        loreList.add(ChatColor.DARK_PURPLE + missionType + " " + missionObj.getMissionObjective() + ": 0/" + missionObj.getRandomAmountRequired());
+        loreList.add(loreColor + missionType + " " + missionObj.getMissionObjective() + ":" + countColor + " 0/" + missionObj.getRandomAmountRequired());
         // Show difficulty
-        loreList.add(ChatColor.DARK_PURPLE + "Difficulty: " + missionObj.getDifficultyColoredString());
+        loreList.add(loreColor + "Difficulty: " + missionObj.getDifficultyColoredString());
         // Set lore and item meta and give to player
         im.setLore(loreList);
         mission.setItemMeta(im);
@@ -69,13 +68,21 @@ public class MissionGiver {
     public static ArrayList<Mission> getMissionsFromConfig() {
         ArrayList<Mission> missions = new ArrayList<>();
         FileConfiguration config = Bukkit.getPluginManager().getPlugin("VisMissions").getConfig();
+        // Set missions colors
+        ChatColor nC = ChatColor.valueOf(config.getString("nameColor"));
+        if(nC != null) nameColor = nC;
+        ChatColor lC = ChatColor.valueOf(config.getString("loreColor"));
+        if(lC != null) loreColor = lC;
+        ChatColor cC = ChatColor.valueOf(config.getString("countColor"));
+        if(cC != null) countColor = cC;
+
         // Load in all mission types from config
-        for(Mission.MissionType missionType : Mission.MissionType.values()) {
+        for(MissionType missionType : MissionType.values()) {
             for(String mission : config.getStringList(missionType.name().toLowerCase() + "Missions")) {
                 // 0 = Difficulty, 1 = Amount, 2 = Mission Objective
                 String[] mp = mission.split(",");
                 String[] amounts = mp[1].split("-");
-                missions.add(new Mission(missionType, Mission.Difficulty.valueOf(mp[0]), Integer.valueOf(amounts[0]),
+                missions.add(new Mission(missionType, MissionDifficulty.valueOf(mp[0]), Integer.valueOf(amounts[0]),
                         Integer.valueOf(amounts[1]), mp[2]));
             }
         }

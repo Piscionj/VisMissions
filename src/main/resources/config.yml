@@ -10,6 +10,11 @@ easyReward: 5.0
 mediumReward: 10.0
 hardReward: 20.0
 #
+# Colors for mission item
+nameColor: AQUA
+loreColor: DARK_PURPLE
+countColor: AQUA
+#
 # NOTE: For creating/editing any missions, do not put spaces before or after the commas
 # All entity/item/block names are what is seen in game
 #
