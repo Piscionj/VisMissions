@@ -1,5 +1,6 @@
 package me.Viscar.Commands;
 
+import me.Viscar.Listeners.MissionRedeemListener;
 import me.Viscar.Missions.MissionGiver;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
@@ -20,6 +21,7 @@ public class Commands implements CommandExecutor {
         if(args.length >= 1 && args[0].equalsIgnoreCase("reload")) {
             sender.sendMessage(ChatColor.AQUA + "Reloading Mission config ...");
             MissionGiver.reloadMissionsFromConfig();
+            MissionRedeemListener.reloadRewardValues();
             sender.sendMessage(ChatColor.AQUA + "Reloading complete!");
         }
         // Give player command: /vm give <player>

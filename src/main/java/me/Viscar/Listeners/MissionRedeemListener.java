@@ -20,12 +20,16 @@ import org.bukkit.persistence.PersistentDataType;
 public class MissionRedeemListener implements Listener {
 
     private Economy economy;
-    private double easyReward;
-    private double mediumReward;
-    private double hardReward;
+    private static double easyReward;
+    private static double mediumReward;
+    private static double hardReward;
 
     public MissionRedeemListener(Economy economy) {
         this.economy = economy;
+        reloadRewardValues();
+    }
+
+    public static void reloadRewardValues() {
         FileConfiguration config = Bukkit.getPluginManager().getPlugin("VisMissions").getConfig();
         easyReward = config.getDouble("easyReward");
         mediumReward = config.getDouble("mediumReward");
@@ -51,10 +55,13 @@ public class MissionRedeemListener implements Listener {
         switch(difficulty) {
             case EASY:
                 amountToGive = easyReward;
+                break;
             case MEDIUM:
                 amountToGive = mediumReward;
+                break;
             case HARD:
                 amountToGive = hardReward;
+                break;
         }
         if(amountToGive != 0) {
             economy.depositPlayer(player, amountToGive);
