@@ -18,9 +18,9 @@ import java.util.List;
 public class MissionGiver {
 
     private static ArrayList<Mission> missionsList = getMissionsFromConfig();
-    private static ChatColor nameColor = ChatColor.AQUA;
-    private static ChatColor loreColor = ChatColor.DARK_PURPLE;
-    private static ChatColor countColor = ChatColor.AQUA;
+    private static ChatColor nameColor = getNameColor();
+    private static ChatColor loreColor = getLoreColor();
+    private static ChatColor countColor = getCountColor();
     private static Plugin plugin = Bukkit.getPluginManager().getPlugin("VisMissions");
     // Added so missions aren't stackable
     private static final NamespacedKey randomMissionKey = new NamespacedKey(plugin, "random");
@@ -69,12 +69,9 @@ public class MissionGiver {
         ArrayList<Mission> missions = new ArrayList<>();
         FileConfiguration config = Bukkit.getPluginManager().getPlugin("VisMissions").getConfig();
         // Set missions colors
-        ChatColor nC = ChatColor.valueOf(config.getString("nameColor"));
-        if(nC != null) nameColor = nC;
-        ChatColor lC = ChatColor.valueOf(config.getString("loreColor"));
-        if(lC != null) loreColor = lC;
-        ChatColor cC = ChatColor.valueOf(config.getString("countColor"));
-        if(cC != null) countColor = cC;
+        nameColor = getNameColor();
+        loreColor = getLoreColor();
+        countColor = getCountColor();
 
         // Load in all mission types from config
         for(MissionType missionType : MissionType.values()) {
@@ -87,6 +84,22 @@ public class MissionGiver {
             }
         }
         return missions;
+    }
+
+    public static ChatColor getNameColor() {
+        FileConfiguration config = Bukkit.getPluginManager().getPlugin("VisMissions").getConfig();
+        ChatColor nC = ChatColor.valueOf(config.getString("nameColor"));
+        return nC == null ? ChatColor.AQUA : nC;
+    }
+    public static ChatColor getLoreColor() {
+        FileConfiguration config = Bukkit.getPluginManager().getPlugin("VisMissions").getConfig();
+        ChatColor lC = ChatColor.valueOf(config.getString("loreColor"));
+        return lC == null ? ChatColor.AQUA : lC;
+    }
+    public static ChatColor getCountColor() {
+        FileConfiguration config = Bukkit.getPluginManager().getPlugin("VisMissions").getConfig();
+        ChatColor cC = ChatColor.valueOf(config.getString("countColor"));
+        return cC == null ? ChatColor.AQUA : cC;
     }
 
     /**
